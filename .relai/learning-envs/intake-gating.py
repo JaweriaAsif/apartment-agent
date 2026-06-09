@@ -78,7 +78,7 @@ environment = RELAIEnvironment(
     id="intake-gating",
     name="Ask Missing Intake Fields",
     description="Tests that the agent asks for budget and work address before searching when the user only gives city and beds.",
-    tags=["end-to-end", "ask-budget-work-address-before-search"],
+    tags=["apartment-regression","ask-budget-work-address-before-search","end-to-end"],
     input=FixedInput(
         turns=[
             FixedTurn(
