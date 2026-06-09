@@ -1,0 +1,20 @@
+{
+  "schema_version": "relai.learning_env_context.v1",
+  "agent": {
+    "entrypoint": "src/apartment_agent/agent.py",
+    "runner_summary": "The simulator builds the existing OpenAI Agents SDK agent, keeps one SQLiteSession for the whole run, and executes each turn through Runner.run_sync(...) from a worker thread."
+  },
+  "components": [],
+  "log_notes": [
+    "User turns appear as user_message events and assistant replies appear as agent_message events.",
+    "This project exposes only the top-level agent plus a hosted WebSearchTool, so transcripts may not include locally replayable component boundaries.",
+    "Observed RELAI mock calls stay empty unless future local tools or subagent boundaries are added."
+  ],
+  "learning_env_guidance": [
+    "Use agent targets for nearly all scenarios because this single-agent project does not expose local function tools or subagent component boundaries.",
+    "Use FixedInput when a specific missing-intake question, ranking behavior, or final summary wording triggers the regression.",
+    "Use PersonaInput when user persistence, ambiguity, or changing requirements affect how the apartment search conversation should unfold.",
+    "Use LLMJudgeEvaluator for listing quality, requirement coverage, and concise decision-useful summaries; use CodeEvaluator only for deterministic transcript checks.",
+    "Mocking cannot suppress the hosted WebSearchTool, so tests should prefer prompts that stay in intake mode unless live web search is intentional."
+  ]
+}
